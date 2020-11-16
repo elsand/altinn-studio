@@ -6,7 +6,7 @@ export interface IFetchFormLayoutAction extends Action {
 }
 
 export interface IFetchFormLayoutFulfilledAction extends Action {
-  formLayout: IFormDesignerLayout;
+  formLayouts: IFormLayouts;
 }
 
 export interface IFetchFormLayoutRejectedAction extends Action {
@@ -20,11 +20,11 @@ export function fetchFormLayout(url: string): IFetchFormLayoutAction {
   };
 }
 export function fetchFormLayoutFulfilled(
-  formLayout: IFormDesignerLayout,
+  formLayouts: IFormLayouts,
 ): IFetchFormLayoutFulfilledAction {
   return {
     type: ActionTypes.FETCH_FORM_LAYOUT_FULFILLED,
-    formLayout,
+    formLayouts,
   };
 }
 

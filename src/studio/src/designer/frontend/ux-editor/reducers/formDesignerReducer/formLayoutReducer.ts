@@ -402,8 +402,8 @@ const formLayoutReducer: Reducer<IFormLayoutState> = (
     }
 
     case FormDesignerActionTypes.FETCH_FORM_LAYOUT_FULFILLED: {
-      const { formLayout } = action as FormDesignerActions.IFetchFormLayoutFulfilledAction;
-      if (!formLayout) {
+      const { formLayouts } = action as FormDesignerActions.IFetchFormLayoutFulfilledAction;
+      if (!formLayouts) {
         return update<IFormLayoutState>(state, {
           fetching: {
             $set: false,
@@ -418,10 +418,10 @@ const formLayoutReducer: Reducer<IFormLayoutState> = (
       }
       return update<IFormLayoutState>(state, {
         layouts: {
-          $set: formLayout,
+          $set: formLayouts,
         },
         layoutOrder: {
-          $set: Object.keys(formLayout),
+          $set: Object.keys(formLayouts),
         },
         fetching: {
           $set: false,
