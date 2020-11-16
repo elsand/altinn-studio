@@ -1,4 +1,4 @@
-import update from 'immutability-helper';
+import update, { extend } from 'immutability-helper';
 import { Action, Reducer } from 'redux';
 import * as AppReleaseActionTypes from './appReleaseActionTypes';
 import { ICreateReleaseFulfilledAction, ICreateReleaseRejectedActions } from './create/createAppReleaseActions';
@@ -20,7 +20,7 @@ const initialState: IAppReleaseState = {
   },
 };
 
-update.extend<IRelease[]>('$addFirstIndex', (param: IRelease, old: IRelease[]) => {
+extend<IRelease[]>('$addFirstIndex', (param: IRelease, old: IRelease[]) => {
   return new Array().concat(param, ...old);
 });
 

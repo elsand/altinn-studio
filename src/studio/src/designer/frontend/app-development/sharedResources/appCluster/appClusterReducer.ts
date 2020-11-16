@@ -1,4 +1,4 @@
-import update from 'immutability-helper';
+import update, { extend } from 'immutability-helper';
 import { Action, Reducer } from 'redux';
 import * as AppClusterActionTypes from './appClusterActionTypes';
 import * as AppClusterActions from './getDeployments/getDeploymentsInAppClusterActions';
@@ -22,7 +22,7 @@ const initialState: IAppClusterState = {
   deploymentList: [],
 };
 
-update.extend('$updateEnvSuccess', (params: any, original: any) => {
+extend('$updateEnvSuccess', (params: any, original: any) => {
   const newState = original.filter((elem: any) => elem.env !== params.env );
 
   const newDeploymentListItem: IEnvironmentItem = {
@@ -39,8 +39,8 @@ update.extend('$updateEnvSuccess', (params: any, original: any) => {
   return newState;
 });
 
-update.extend('$updateEnvFailed', (params: any, original: any) => {
-  const newState = original.filter((elem: any) => elem.env !== params.env );
+extend('$updateEnvFailed', (params: any, original: any) => {
+  const newState = original.filter((elem: any) => elem.env !== params.env);
 
   const newDeploymentListItem: IEnvironmentItem = {
     env: params.env,
@@ -64,7 +64,6 @@ const appClusterReducer: Reducer<IAppClusterState> = (
     return state;
   }
   switch (action.type) {
-
     case AppClusterActionTypes.GET_DEPLOYMENTS_FULFILLED: {
       const { result, env } = action as AppClusterActions.IGetDeploymentsFulfilled;
       return update<IAppClusterState>(state, {

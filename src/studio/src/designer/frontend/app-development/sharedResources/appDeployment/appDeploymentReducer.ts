@@ -1,4 +1,4 @@
-import update from 'immutability-helper';
+import update, { extend } from 'immutability-helper';
 import { Action, Reducer } from 'redux';
 import * as AppDeploymentActionTypes from './appDeploymentActionTypes';
 import { ICreateAppDeploymentFulfilled, ICreateAppDeploymentRejected } from './create/createAppDeploymentActions';
@@ -23,7 +23,7 @@ const initialState: IAppDeploymentState = {
   createAppDeploymentErrors: [],
 };
 
-update.extend('$updateCreateAppDeploymentError', (params: any, original: any) => {
+extend('$updateCreateAppDeploymentError', (params: any, original: any) => {
   const newState = original.filter((elem: any) => elem.env !== params.env );
 
   const newAppDeploymentError: ICreateAppDeploymentErrors = {
