@@ -1,10 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <!-- SonarCloud needs this -->
     <ProjectGuid>{d9c0433e-738c-4e07-9f88-d71d7df04e3f}</ProjectGuid>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migration\**" />
+    <!-- <Content Remove="Migration\**" />
+    <EmbeddedResource Remove="Migration\**" />
+    <None Remove="Migration\**" />-->
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Altinn.Common.PEP" Version="1.0.38-alpha" />
